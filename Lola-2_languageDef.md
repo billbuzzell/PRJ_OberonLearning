@@ -1,5 +1,5 @@
 #Lola-2: "Logic Language"  
-**A Logic Description Language  
+**A Logic Description Language**  
 _N. Wirth, 24.4.94 / 24.11.2014_  
 
 
