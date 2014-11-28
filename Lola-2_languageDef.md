@@ -11,14 +11,14 @@ are defined as expressions of other objects and operators representing gates.
 **0. Vocabulary**
 The vocabulary of Lola consists of special characters (or pairs), and so-called _reserved words_ which cannot be chosen as identifiers.
 
-Special characters:
+>Special characters:
+>
+>`~ & | ^ + - * = # < <= > >=`  
+>`( ) [ ] { } . , ; : := ' !`
+>
+>Reserved words:
 
-`~ & | ^ + - * = # < <= > >=`  
-`( ) [ ] { } . , ; : := ' !`
-
-Reserved words:
-
-``BEGIN CONST END IN INOUT MODULE OUT REG TYPE VAR``
+>``BEGIN CONST END IN INOUT MODULE OUT REG TYPE VAR``
 
 **1. Identifiers, integers, and comments**
 
