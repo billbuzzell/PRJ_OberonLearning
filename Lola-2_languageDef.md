@@ -1,6 +1,6 @@
-#Lola-2: "Logic Language"
-##A Logic Description Language
-_N. Wirth, 24.4.94 / 24.11.2014_
+#Lola-2: "Logic Language"  
+##A Logic Description Language  
+_N. Wirth, 24.4.94 / 24.11.2014_  
 
 
 Lola is a notation (language) for specifying digital circuits (logic). In many ways it resembles a
