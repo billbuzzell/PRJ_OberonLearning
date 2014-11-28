@@ -1,5 +1,5 @@
 #Lola-2: "Logic Language"  
-*A Logic Description Language*  
+###A Logic Description Language  
 _N. Wirth, 24.4.94 / 24.11.2014_  
 
 
@@ -27,7 +27,7 @@ Identifiers are used to denote constants, variables, and types.
 ``identifier = letter {letter | digit}.  
 integer = ["$"] digit {digit}.``  
 
-Examples: `Lola begin 100 0`
+>Examples: `Lola begin 100 0`
 
 Capital and lower case letters are considered as distinct. If an integer is preceded by a $ sign, it is in hexadecimal form with digits 0, 1, ..., 9, and A ... F.
 
