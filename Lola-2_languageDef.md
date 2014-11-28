@@ -15,8 +15,8 @@ The vocabulary of Lola consists of special characters (or pairs), and so-called 
 
 Special characters:
 
-``~ & | ^ + - * = # < <= > >=``  
-``( ) [ ] { } . , ; : := ' !``
+`~ & | ^ + - * = # < <= > >=`  
+`( ) [ ] { } . , ; : := ' !`
 
 Reserved words:
 
