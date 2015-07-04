@@ -1,4 +1,4 @@
 PRJ_OberonLearning
 ==================
 
-My learning repo
+This is a test repo. Mostly Oberon documents and test projects.
