@@ -146,7 +146,7 @@ Here's a "line block":
 
 and images can be specified like so:
 
-![example image](http://www.saanlima.com/images/oberon3.jpg)
+![example image](https://github.com/billbuzzell/PRJ_OberonLearning/raw/master/AstrobeRISC5_scm.png)
 
 
 Inline math equations go in like so: $\omega = d\phi / dt$. Display
