@@ -148,6 +148,7 @@ and images can be specified like so:
 
 ![example image](http://www.saanlima.com/images/oberon3.jpg)
 
+
 Inline math equations go in like so: $\omega = d\phi / dt$. Display
 math should get its own line and be put in in double-dollarsigns:
 
