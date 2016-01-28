@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><STYLE TYPE="text/css" TITLE="Bright Colours">
+#seDefault {color: #000000; font-family: "Consolas"; text-decoration: none;font-weight: normal; font-style: normal; background-color: #FFFFFF; font-size: 9pt;}
+#Marked_block {background-color: #3399FF; color: #FFFFFF;}
+#Comment { color: #6D6D6D; font-weight: normal; font-style: italic; text-decoration: none;}
+#Pragma { color: #000000; font-weight: normal; font-style: normal; text-decoration: none;}
+#Identifier { color: #000000; font-weight: normal; font-style: normal; text-decoration: none;}
+#String { color: #000000; font-weight: normal; font-style: normal; text-decoration: none; font-size: 10pt; font-family: "Courier New";}
+#Number { color: #000080; font-weight: bold; font-style: normal; text-decoration: none;}
+#Symbol { color: #800000; font-weight: bold; font-style: normal; text-decoration: none;}
+#Reserved_word { color: #000000; font-weight: bold; font-style: normal; text-decoration: none;}
+#Default {background-color: #F3F3F5; color: #000000; font-weight: normal; font-style: normal; text-decoration: none;}
+#ProcExport {background-color: #E3E8F4; color: #000000; font-weight: normal; font-style: normal; text-decoration: none;}
+#Proc {background-color: #FBFDCE; color: #000000; font-weight: normal; font-style: normal; text-decoration: none;}
+#ProcLeaf {background-color: #EAEAEA; color: #000000; font-weight: normal; font-style: normal; text-decoration: none;}
+#MODULE {background-color: #EBEBEB; color: #000000; font-weight: normal; font-style: normal; text-decoration: none;}
+#CONSTblock {background-color: #000080; color: #FFFFFF; font-weight: normal; font-style: normal; text-decoration: none;}
+</STYLE>
+</head>
+<body id="seDefault"><SPAN id="Reserved_word">MODULE</span> <SPAN id="Identifier">Test</span><SPAN id="Symbol">;</span><br>
+<br>
+<SPAN id="Reserved_word">CONST</span> <SPAN id="Identifier">out</span> <SPAN id="Symbol">=</span> <SPAN id="Number">378H</span><SPAN id="Symbol">;</span> <SPAN id="Identifier">in</span> <SPAN id="Symbol">=</span> <SPAN id="Number">379H</span><SPAN id="Symbol">;</span> <SPAN id="Comment">(*port addresses*)</span><br>
+<SPAN id="Identifier">del0</span> <SPAN id="Symbol">=</span> <SPAN id="Number">2000</span><SPAN id="Symbol">;</span> <SPAN id="Identifier">del1</span> <SPAN id="Symbol">=</span> <SPAN id="Number">1000</span><SPAN id="Symbol">;</span> <SPAN id="Comment">(*processor dependent*)</span><br>
+<br>
+<SPAN id="Reserved_word">PROCEDURE</span> <SPAN id="Identifier">wait</span><SPAN id="Symbol">(</span><SPAN id="Identifier">k</span><SPAN id="Symbol">:</span> <SPAN id="Identifier">LONGINT</span><SPAN id="Symbol">)</span><SPAN id="Symbol">;</span><br>
+<SPAN id="Reserved_word">BEGIN</span><br>
+ &nbsp;<SPAN id="Reserved_word">REPEAT</span> <SPAN id="Reserved_word">DEC</span><SPAN id="Symbol">(</span><SPAN id="Identifier">k</span><SPAN id="Symbol">)</span> <SPAN id="Reserved_word">UNTIL</span> <SPAN id="Identifier">k</span> <SPAN id="Symbol">=</span> <SPAN id="Number">0</span><br>
+<SPAN id="Reserved_word">END</span> <SPAN id="Identifier">wait</span><SPAN id="Symbol">;</span><br>
+<br>
+<SPAN id="Reserved_word">PROCEDURE</span><SPAN id="Symbol">*</span> <SPAN id="Identifier">S</span><SPAN id="Symbol">(</span><SPAN id="Identifier">d</span><SPAN id="Symbol">:</span> <SPAN id="Identifier">LONGINT</span><SPAN id="Symbol">)</span><SPAN id="Symbol">;</span><br>
+ &nbsp;<SPAN id="Reserved_word">BEGIN</span> <SPAN id="Identifier">SYSTEM</span><SPAN id="Symbol">.</span><SPAN id="Identifier">PORTOUT</span><SPAN id="Symbol">(</span><SPAN id="Identifier">out</span><SPAN id="Symbol">,</span> <SPAN id="Identifier">d</span><SPAN id="Symbol">)</span><br>
+<SPAN id="Reserved_word">END</span> <SPAN id="Identifier">S</span><SPAN id="Symbol">;</span><br>
+<br>
+<SPAN id="Reserved_word">PROCEDURE</span> <SPAN id="Identifier">R</span><SPAN id="Symbol">(</span><SPAN id="Identifier">VAR</span> <SPAN id="Identifier">b</span><SPAN id="Symbol">:</span> <SPAN id="Identifier">INTEGER</span><SPAN id="Symbol">)</span><SPAN id="Symbol">;</span><br>
+<SPAN id="Identifier">VAR</span> <SPAN id="Identifier">ch</span><SPAN id="Symbol">:</span> <SPAN id="Identifier">CHAR</span><SPAN id="Symbol">;</span><br>
+ &nbsp;<SPAN id="Reserved_word">BEGIN</span> <SPAN id="Comment">(*read D6, dat*)</span> <SPAN id="Identifier">SYSTEM</span><SPAN id="Symbol">.</span><SPAN id="Identifier">PORTIN</span><SPAN id="Symbol">(</span><SPAN id="Identifier">in</span><SPAN id="Symbol">,</span> <SPAN id="Identifier">ch</span><SPAN id="Symbol">)</span><SPAN id="Symbol">;</span><br>
+ &nbsp;&nbsp;<SPAN id="Identifier">b</span> <SPAN id="Symbol">:</span><SPAN id="Symbol">=</span> <SPAN id="Identifier">ORD</span><SPAN id="Symbol">(</span><SPAN id="Identifier">ch</span><SPAN id="Symbol">)</span> <SPAN id="Identifier">DIV</span> <SPAN id="Number">20H</span> <SPAN id="Identifier">MOD</span> <SPAN id="Number">2</span><br>
+ &nbsp;<SPAN id="Reserved_word">END</span> <SPAN id="Identifier">R</span><SPAN id="Symbol">;</span><br>
+<br>
+<SPAN id="Reserved_word">PROCEDURE</span> <SPAN id="Identifier">Send</span><SPAN id="Symbol">*</span><SPAN id="Symbol">(</span><SPAN id="Identifier">d</span><SPAN id="Symbol">:</span> <SPAN id="Identifier">LONGINT</span><SPAN id="Symbol">)</span><SPAN id="Symbol">;</span><br>
+<SPAN id="Identifier">VAR</span> <SPAN id="Identifier">i</span><SPAN id="Symbol">:</span> <SPAN id="Identifier">INTEGER</span><SPAN id="Symbol">;</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+ &nbsp;<SPAN id="Reserved_word">BEGIN</span><br>
+ &nbsp;&nbsp;&nbsp;<SPAN id="Identifier">FOR</span> <SPAN id="Identifier">i</span> <SPAN id="Symbol">:</span><SPAN id="Symbol">=</span> <SPAN id="Number">0</span> <SPAN id="Identifier">TO</span> <SPAN id="Number">7</span> <SPAN id="Reserved_word">DO</span><br>
+ &nbsp;&nbsp;&nbsp;<SPAN id="Identifier">S</span><SPAN id="Symbol">(</span><SPAN id="Identifier">d</span> <SPAN id="Identifier">MOD</span> <SPAN id="Number">2</span> <SPAN id="Symbol">+</span> <SPAN id="Number">4</span><SPAN id="Symbol">)</span><SPAN id="Symbol">;</span> <SPAN id="Identifier">wait</span><SPAN id="Symbol">(</span><SPAN id="Identifier">del0</span><SPAN id="Symbol">)</span><SPAN id="Symbol">;</span><br>
+ &nbsp;&nbsp;&nbsp;<SPAN id="Identifier">S</span><SPAN id="Symbol">(</span><SPAN id="Identifier">d</span> <SPAN id="Identifier">MOD</span> <SPAN id="Number">2</span> <SPAN id="Symbol">+</span> <SPAN id="Number">6</span><SPAN id="Symbol">)</span><SPAN id="Symbol">;</span> <SPAN id="Identifier">wait</span><SPAN id="Symbol">(</span><SPAN id="Identifier">del1</span><SPAN id="Symbol">)</span><SPAN id="Symbol">;</span><br>
+ &nbsp;&nbsp;&nbsp;<SPAN id="Identifier">d</span> <SPAN id="Symbol">:</span><SPAN id="Symbol">=</span> <SPAN id="Identifier">d</span> <SPAN id="Identifier">DIV</span> <SPAN id="Number">2</span><br>
+ &nbsp;<SPAN id="Reserved_word">END</span> <SPAN id="Symbol">;</span><br>
+ &nbsp;<SPAN id="Identifier">S</span><SPAN id="Symbol">(</span><SPAN id="Number">7</span><SPAN id="Symbol">)</span><br>
+<SPAN id="Reserved_word">END</span> <SPAN id="Identifier">Send</span><SPAN id="Symbol">;</span><br>
+<br>
+<SPAN id="Reserved_word">PROCEDURE</span> <SPAN id="Identifier">Receive</span><SPAN id="Symbol">*</span><SPAN id="Symbol">(</span><SPAN id="Identifier">VAR</span> <SPAN id="Identifier">d</span><SPAN id="Symbol">:</span> <SPAN id="Identifier">LONGINT</span><SPAN id="Symbol">)</span><SPAN id="Symbol">;</span><br>
+<SPAN id="Identifier">VAR</span> <SPAN id="Identifier">x</span><SPAN id="Symbol">,</span> <SPAN id="Identifier">b</span><SPAN id="Symbol">,</span> <SPAN id="Identifier">i</span><SPAN id="Symbol">:</span> <SPAN id="Identifier">INTEGER</span><SPAN id="Symbol">;</span><br>
+ &nbsp;<SPAN id="Reserved_word">BEGIN</span> <SPAN id="Identifier">x</span> <SPAN id="Symbol">:</span><SPAN id="Symbol">=</span> <SPAN id="Number">0</span><SPAN id="Symbol">;</span><br>
+ &nbsp;&nbsp;&nbsp;<SPAN id="Identifier">FOR</span> <SPAN id="Identifier">i</span> <SPAN id="Symbol">:</span><SPAN id="Symbol">=</span> <SPAN id="Number">0</span> <SPAN id="Identifier">TO</span> <SPAN id="Number">7</span> <SPAN id="Reserved_word">DO</span><br>
+ &nbsp;&nbsp;&nbsp;<SPAN id="Identifier">S</span><SPAN id="Symbol">(</span><SPAN id="Number">5</span><SPAN id="Symbol">)</span><SPAN id="Symbol">;</span> <SPAN id="Identifier">wait</span><SPAN id="Symbol">(</span><SPAN id="Identifier">del0</span><SPAN id="Symbol">)</span><SPAN id="Symbol">;</span><br>
+ &nbsp;&nbsp;&nbsp;<SPAN id="Identifier">S</span><SPAN id="Symbol">(</span><SPAN id="Number">7</span><SPAN id="Symbol">)</span><SPAN id="Symbol">;</span> <SPAN id="Identifier">R</span><SPAN id="Symbol">(</span><SPAN id="Identifier">b</span><SPAN id="Symbol">)</span><SPAN id="Symbol">;</span> <SPAN id="Identifier">x</span> <SPAN id="Symbol">:</span><SPAN id="Symbol">=</span> <SPAN id="Symbol">(</span><SPAN id="Identifier">x</span> <SPAN id="Identifier">DIV</span> <SPAN id="Number">2</span><SPAN id="Symbol">)</span> <SPAN id="Symbol">+</span> <SPAN id="Symbol">(</span><SPAN id="Identifier">b</span> <SPAN id="Symbol">*</span> <SPAN id="Number">80H</span><SPAN id="Symbol">)</span><SPAN id="Symbol">;</span><br>
+ &nbsp;&nbsp;&nbsp;<SPAN id="Identifier">wait</span><SPAN id="Symbol">(</span><SPAN id="Identifier">del1</span><SPAN id="Symbol">)</span><br>
+ &nbsp;<SPAN id="Reserved_word">END</span> <SPAN id="Symbol">;</span><br>
+ &nbsp;<SPAN id="Identifier">d</span> <SPAN id="Symbol">:</span><SPAN id="Symbol">=</span> <SPAN id="Identifier">x</span><br>
+<SPAN id="Reserved_word">END</span> <SPAN id="Identifier">Receive</span><SPAN id="Symbol">;</span><br>
+<br>
+<SPAN id="Reserved_word">END</span> <SPAN id="Identifier">Test</span><SPAN id="Symbol">;</span><br>
+</body></html>
